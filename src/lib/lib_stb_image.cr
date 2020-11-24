@@ -23,6 +23,7 @@
 
 @[Link(ldflags: "#{__DIR__}/../../ext/stb_image.o")]
 @[Link(ldflags: "#{__DIR__}/../../ext/stb_image_write.o")]
+@[Link(ldflags: "#{__DIR__}/../../ext/stb_image_resize.o")]
 lib LibStbImage
   enum Component
     Default   = 0
@@ -68,4 +69,6 @@ lib LibStbImage
   fun write_bmp = stbi_write_bmp(filename : LibC::Char*, w : Int32, h : Int32, comp : Int32, data : Pointer(Void)) : Int32
   fun write_tga = stbi_write_tga(filename : LibC::Char*, w : Int32, h : Int32, comp : Int32, data : Pointer(Void)) : Int32
   fun write_hdr = stbi_write_hdr(filename : LibC::Char*, w : Int32, h : Int32, comp : Int32, data : Pointer(Void)) : Int32
+
+  fun resize_uint8 = stbir_resize_uint8(input_pixels : LibC::Char*, input_w : Int32, input_h : Int32, input_stride_in_bytes : Int32, output_pixels : LibC::Char*, output_w : Int32, output_h : Int32, output_stride_in_bytes : Int32, num_channels : Int32) : Int32
 end
